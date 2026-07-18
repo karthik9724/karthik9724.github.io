@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bogimi Karthik Naidu | SDE Portfolio</title>
+    
+    <!-- Initials SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100%25' height='100%25' fill='%230b1610'/%3E%3Ctext x='50%25' y='55%25' font-family='serif' font-weight='bold' font-size='42' fill='%2352b788' dominant-baseline='middle' text-anchor='middle'%3EBKN%3C/text%3E%3C/svg%3E">
+    
+    <!-- Google Fonts: Playfair Display + Source Sans 3 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS with custom configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Source Sans 3"', 'sans-serif'],
+                    },
+                    colors: {
+                        forest: {
+                            950: '#050a07',
+                            900: '#0b1610',
+                            800: '#112218',
+                            700: '#1b3525',
+                            600: '#274e37',
+                            500: '#386f4e',
+                            400: '#4fa171',
+                            300: '#72be91',
+                            200: '#9cd5b4',
+                            100: '#c5ebd3',
+                            50: '#eef8f2',
+                        },
+                        gold: {
+                            400: '#f4a261',
+                            500: '#e76f51',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050a07;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1b3525;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4fa171;
+        }
+
+        /* Desktop horizontal scroll snapping logic */
+        @media (min-width: 768px) {
+            .horizontal-container {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                width: 100vw;
+                height: 100vh;
+            }
+            .snap-section {
+                flex-shrink: 0;
+                width: 100vw;
+                height: 100vh;
+                scroll-snap-align: start;
+                overflow-y: auto;
+            }
+        }
+    </style>
+</head>
+<body class="bg-forest-950 text-forest-100 font-sans selection:bg-forest-400 selection:text-forest-950 overflow-x-hidden md:overflow-hidden">
+
+    <!-- Floating Header -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-forest-950/80 backdrop-blur-md border-b border-forest-900 px-6 py-4 md:px-12 flex justify-between items-center">
+        <div>
+            <a href="#hero" class="font-serif text-lg md:text-xl font-bold tracking-tight text-forest-50 hover:text-forest-300 transition-colors">
+                BOGIMI KARTHIK NAIDU
+            </a>
+        </div>
+        
+        <!-- Desktop Horizontal Progress Indicators -->
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold tracking-wider uppercase">
+            <button onclick="scrollToSection(0)" class="nav-btn group flex items-center space-x-2 text-forest-300 hover:text-white transition-colors" data-index="0">
+                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">01</span>
+                <span>Home</span>
+            </button>
+            <button onclick="scrollToSection(1)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="1">
+                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">02</span>
+                <span>About</span>
+            </button>
+            <button onclick="scrollToSection(2)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="2">
+                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">03</span>
+                <span>Skills</span>
+            </button>
+            <button onclick="scrollToSection(3)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="3">
+                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">04</span>
+                <span>Projects</span>
+            </button>
+            <button onclick="scrollToSection(4)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="4">
+                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">05</span>
+                <span>Journey</span>
+            </button>
+            <button onclick="scrollToSection(5)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="5">
+                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">06</span>
+                <span>Connect</span>
+            </button>
+        </nav>
+
+        <!-- Social Media Shortcuts (Header Right) -->
+        <div class="flex items-center space-x-4">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2 text-forest-400 hover:text-forest-200 transition-colors" title="GitHub">
+                <i data-lucide="github" class="w-5 h-5"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-2 text-forest-400 hover:text-forest-200 transition-colors" title="LinkedIn">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation Scroll Indicators (Desktop Right Vertical Bar) -->
+    <div class="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col space-y-4">
+        <button onclick="scrollToSection(0)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-300 transition-all" data-index="0" title="Home"></button>
+        <button onclick="scrollToSection(1)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="1" title="About"></button>
+        <button onclick="scrollToSection(2)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="2" title="Skills"></button>
+        <button onclick="scrollToSection(3)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="3" title="Projects"></button>
+        <button onclick="scrollToSection(4)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="4" title="Journey"></button>
+        <button onclick="scrollToSection(5)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="5" title="Connect"></button>
+    </div>
+
+    <!-- Active Indicator Bar top edge -->
+    <div class="fixed top-0 left-0 h-[3px] bg-forest-400 transition-all duration-300 z-50" id="progressBar" style="width: 0%"></div>
+
+    <!-- MAIN IMMERSIVE VIEWPORT CONTAINER -->
+    <main class="horizontal-container w-full min-h-screen pt-16 md:pt-0" id="viewportContainer">
+
+        <!-- SECTION 1: HERO -->
+        <section id="hero" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950 relative">
+            <!-- Decorative background vector details -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+                <div class="absolute -top-12 -left-12 w-96 h-96 rounded-full border border-forest-400"></div>
+                <div class="absolute bottom-12 right-24 w-[30rem] h-[30rem] rounded-full border border-forest-400/50"></div>
+            </div>
+
+            <div class="max-w-4xl z-10 space-y-6">
+                <p class="text-xs md:text-sm font-semibold tracking-[0.25em] text-forest-400 uppercase">COMPUTER SCIENCE UNDERGRADUATE · CLASS OF 2027</p>
+                <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white leading-none">
+                    Bogimi Karthik <span class="italic text-forest-300 font-light block md:inline">Naidu</span>
+                </h1>
+                <p class="font-serif text-lg md:text-2xl text-forest-200 italic max-w-2xl font-light">
+                    Building robust, intelligent Web Applications & Full-Stack AI Solutions.
+                </p>
+                
+                <div class="pt-6 flex flex-wrap gap-4">
+                    <button onclick="scrollToSection(1)" class="px-6 py-3 bg-forest-700 hover:bg-forest-600 text-white rounded-lg font-semibold tracking-wide transition-all duration-300 shadow-md flex items-center space-x-2">
+                        <span>Explore Portfolio</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                    <a href="#contact" onclick="scrollToSection(5)" class="px-6 py-3 border border-forest-700 hover:bg-forest-900/40 text-forest-200 hover:text-white rounded-lg font-semibold tracking-wide transition-all duration-300">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-6 md:left-24 animate-bounce hidden md:flex items-center space-x-2 text-xs text-forest-500 uppercase tracking-widest">
+                <span>Swipe or scroll horizontally</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ABOUT -->
+        <section id="about" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-900 border-t md:border-t-0 md:border-l border-forest-800">
+            <div class="max-w-5xl py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left side: Editorial Pull Quote -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">01 / OVERVIEW</span>
+                        <h2 class="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
+                            Translating intricate algorithms and complex database structures into fluid visual realities.
+                        </h2>
+                        <p class="text-forest-300 text-base md:text-lg leading-relaxed font-light">
+                            Computer Science undergraduate with advanced competency in Java, Data Structures, Algorithms, full-stack web architectures, and Deep Learning techniques. Driven to architect production-grade, modular SDE systems that deliver user-centric value and optimize deep-tier performance.
+                        </p>
+                    </div>
+
+                    <!-- Right side: Clean Metric Grid -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                        <div class="bg-forest-950 p-6 rounded-xl border border-forest-800/80 hover:border-forest-700 transition-all flex flex-col justify-between">
+                            <span class="text-3xl md:text-4xl font-serif text-forest-300 font-bold">8.23</span>
+                            <span class="text-xs text-forest-400 uppercase tracking-wider mt-4">Current B.Tech CGPA</span>
+                        </div>
+                        <div class="bg-forest-950 p-6 rounded-xl border border-forest-800/80 hover:border-forest-700 transition-all flex flex-col justify-between">
+                            <span class="text-3xl md:text-4xl font-serif text-forest-300 font-bold">300+</span>
+                            <span class="text-xs text-forest-400 uppercase tracking-wider mt-4">Coding Problems Solved</span>
+                        </div>
+                        <div class="bg-forest-950 p-6 rounded-xl border border-forest-800/80 hover:border-forest-700 transition-all flex flex-col justify-between col-span-2">
+                            <span class="text-lg font-serif text-forest-50 font-bold flex items-center space-x-2">
+                                <i data-lucide="trophy" class="w-5 h-5 text-forest-300 shrink-0"></i>
+                                <span>Algorythm Winner</span>
+                            </span>
+                            <span class="text-xs text-forest-400 uppercase tracking-wider mt-2">1st Prize Inter-College Coding Contest</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SKILLS -->
+        <section id="skills" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-950 border-t md:border-t-0 md:border-l border-forest-900">
+            <div class="max-w-6xl py-12">
+                <div class="mb-10">
+                    <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">02 / COMPETENCIES</span>
+                    <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mt-1">Technical Stack</h2>
+                    <p class="text-forest-400 text-sm mt-2">Grouped and specialized domains compiled during my academic & development career</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Programming & Core -->
+                    <div class="bg-forest-900/60 p-6 rounded-xl border border-forest-800 hover:border-forest-600 transition-all">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2.5 rounded-lg bg-forest-950 text-forest-300">
+                                <i data-lucide="code-2" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-serif text-lg font-bold text-forest-100">Languages & Core</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-forest-300">
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>Java (OOP, Multithreading)</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Advanced</span>
+                            </li>
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>C Programming</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Core</span>
+                            </li>
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>Data Structures & Alg</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Highly Proficient</span>
+                            </li>
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>OS & Computer Networks</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Theoretical</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Web & Databases -->
+                    <div class="bg-forest-900/60 p-6 rounded-xl border border-forest-800 hover:border-forest-600 transition-all">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2.5 rounded-lg bg-forest-950 text-forest-300">
+                                <i data-lucide="database" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-serif text-lg font-bold text-forest-100">Web & Databases</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-forest-300">
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>React.js / Node.js / Express</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Full MERN</span>
+                            </li>
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>MongoDB / MySQL / SQLite</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Relational & NoSQL</span>
+                            </li>
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>JavaScript (ES6+)</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Proficient</span>
+                            </li>
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>HTML5 / CSS3 / Tailwind</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Frontend UI</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Cloud, Salesforce & Tools -->
+                    <div class="bg-forest-900/60 p-6 rounded-xl border border-forest-800 hover:border-forest-600 transition-all">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2.5 rounded-lg bg-forest-950 text-forest-300">
+                                <i data-lucide="cloud" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-serif text-lg font-bold text-forest-100">Salesforce & Tools</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-forest-300">
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>Apex, SOQL, LWC</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Developer</span>
+                            </li>
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>Flow Builder & Trailhead</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Admin</span>
+                            </li>
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>Git & GitHub Workflows</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">VCS</span>
+                            </li>
+                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
+                                <span>VS Code, Postman & REST</span>
+                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Environment</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: PROJECTS -->
+        <section id="projects" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-900 border-t md:border-t-0 md:border-l border-forest-800">
+            <div class="max-w-6xl py-12">
+                <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between">
+                    <div>
+                        <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">03 / CREATIVE BUILDS</span>
+                        <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mt-1">Featured Ventures</h2>
+                    </div>
+                </div>
+
+                <!-- Horizontal cards flex-wrap layout -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Project 1: EventSphere -->
+                    <div class="group bg-forest-950 rounded-xl overflow-hidden border border-forest-800 hover:border-forest-500 transition-all flex flex-col justify-between h-full p-6 space-y-4">
+                        <div>
+                            <div class="flex items-start justify-between">
+                                <h3 class="font-serif text-xl md:text-2xl font-bold text-white group-hover:text-forest-300 transition-colors">EventSphere</h3>
+                                <span class="text-[10px] text-forest-400 border border-forest-800 rounded-full px-2 py-0.5">MERN Stack</span>
+                            </div>
+                            <p class="text-forest-400 text-xs mt-1 uppercase tracking-widest">College Event Management Platform</p>
+                            
+                            <p class="text-forest-300 text-sm mt-4 leading-relaxed font-light">
+                                Developed a robust college-wide events system incorporating MongoDB, Express, React, and Node.js. Optimized back-end interactions with elegant REST architectures, robust user authentication modules, registration processes, and custom administrative controls.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">MongoDB</span>
+                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">React.js</span>
+                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">Node.js</span>
+                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">Express</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 flex items-center space-x-4">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold tracking-wider uppercase text-forest-300 hover:text-white flex items-center space-x-1.5 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span>Code Repository</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Deep Fake Detection -->
+                    <div class="group bg-forest-950 rounded-xl overflow-hidden border border-forest-800 hover:border-forest-500 transition-all flex flex-col justify-between h-full p-6 space-y-4">
+                        <div>
+                            <div class="flex items-start justify-between">
+                                <h3 class="font-serif text-xl md:text-2xl font-bold text-white group-hover:text-forest-300 transition-colors">Deep Fake Detector</h3>
+                                <span class="text-[10px] text-forest-400 border border-forest-800 rounded-full px-2 py-0.5">AI / Flask</span>
+                            </div>
+                            <p class="text-forest-400 text-xs mt-1 uppercase tracking-widest">CNN & Attention Application</p>
+                            
+                            <p class="text-forest-300 text-sm mt-4 leading-relaxed font-light">
+                                Fabricated a cutting-edge, deep learning framework focusing on CBAM (Convolutional Block Attention Module), MTCNN face recognition, and Xception CNN topologies. Generates heatmaps via Grad-CAM visualizations on responsive interfaces built on React and Flask.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">TensorFlow</span>
+                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">Flask API</span>
+                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">React.js</span>
+                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">SQLite</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 flex items-center space-x-4">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold tracking-wider uppercase text-forest-300 hover:text-white flex items-center space-x-1.5 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span>Code Repository</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: EDUCATION & TIMELINE -->
+        <section id="journey" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-950 border-t md:border-t-0 md:border-l border-forest-900">
+            <div class="max-w-6xl py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Left: Educational Milestones -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div>
+                            <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">04 / BACKGROUND</span>
+                            <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mt-1">Academic Timeline</h2>
+                        </div>
+
+                        <div class="space-y-6 border-l border-forest-800 pl-4 mt-6">
+                            
+                            <!-- Graduation (B.Tech) -->
+                            <div class="relative pl-2 group">
+                                <div class="absolute -left-[21px] top-1.5 w-3.5 h-3.5 rounded-full bg-forest-400 group-hover:scale-125 transition-all"></div>
+                                <span class="text-xs text-forest-400 tracking-wider">2023 — 2027</span>
+                                <h4 class="font-serif text-lg font-bold text-white">B.Tech in Computer Science</h4>
+                                <p class="text-sm text-forest-300">Geethanjali College of Engineering & Technology</p>
+                                <span class="inline-block mt-1 text-xs font-semibold bg-forest-900 px-2.5 py-0.5 rounded text-forest-300">CGPA: 8.23</span>
+                            </div>
+
+                            <!-- Narayana College -->
+                            <div class="relative pl-2 group">
+                                <div class="absolute -left-[21px] top-1.5 w-3.5 h-3.5 rounded-full bg-forest-700 group-hover:bg-forest-500 transition-all"></div>
+                                <span class="text-xs text-forest-400 tracking-wider">2021 — 2023</span>
+                                <h4 class="font-serif text-lg font-bold text-white">Intermediate MPC</h4>
+                                <p class="text-sm text-forest-300">Narayana Junior College</p>
+                                <span class="inline-block mt-1 text-xs font-semibold bg-forest-900 px-2.5 py-0.5 rounded text-forest-300">Score: 972 / 1000</span>
+                            </div>
+
+                            <!-- SSC -->
+                            <div class="relative pl-2 group">
+                                <div class="absolute -left-[21px] top-1.5 w-3.5 h-3.5 rounded-full bg-forest-800 group-hover:bg-forest-600 transition-all"></div>
+                                <span class="text-xs text-forest-400 tracking-wider">2020 — 2021</span>
+                                <h4 class="font-serif text-lg font-bold text-white">SSC Secondary School</h4>
+                                <p class="text-sm text-forest-300">Vijayanikethan High School</p>
+                                <span class="inline-block mt-1 text-xs font-semibold bg-forest-900 px-2.5 py-0.5 rounded text-forest-300">Score: 600 / 600 (Perfect 10 GPA)</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Right: Verified Certifications -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div>
+                            <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">VERIFIED INVENTORIES</span>
+                            <h2 class="font-serif text-2xl md:text-3xl font-bold text-white mt-1">Certifications & Experience</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                            
+                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all">
+                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
+                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
+                                    <span class="text-xs font-bold tracking-wider uppercase">Internship (2025)</span>
+                                </div>
+                                <h4 class="font-serif font-bold text-white">MERN Stack Intern</h4>
+                                <p class="text-xs text-forest-400 mt-0.5">Cantilever Labs</p>
+                            </div>
+
+                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all">
+                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
+                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
+                                    <span class="text-xs font-bold tracking-wider uppercase">Salesforce Admin</span>
+                                </div>
+                                <h4 class="font-serif font-bold text-white">Trailhead Administrator</h4>
+                                <p class="text-xs text-forest-400 mt-0.5">Salesforce Trailhead Academy</p>
+                            </div>
+
+                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all">
+                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
+                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
+                                    <span class="text-xs font-bold tracking-wider uppercase">Networking (2025)</span>
+                                </div>
+                                <h4 class="font-serif font-bold text-white">CCNA Network Associate</h4>
+                                <p class="text-xs text-forest-400 mt-0.5">Cisco Networking Academy</p>
+                            </div>
+
+                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all">
+                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
+                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
+                                    <span class="text-xs font-bold tracking-wider uppercase">Python Essentials (2025)</span>
+                                </div>
+                                <h4 class="font-serif font-bold text-white">Python Core Certified</h4>
+                                <p class="text-xs text-forest-400 mt-0.5">Cisco Networking Academy</p>
+                            </div>
+
+                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all sm:col-span-2">
+                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
+                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
+                                    <span class="text-xs font-bold tracking-wider uppercase">Database Dev (2024)</span>
+                                </div>
+                                <h4 class="font-serif font-bold text-white">Database Programming with MySQL</h4>
+                                <p class="text-xs text-forest-400 mt-0.5">Oracle Academy</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: CONNECT -->
+        <section id="contact" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-900 border-t md:border-t-0 md:border-l border-forest-800 relative">
+            <div class="max-w-4xl py-12">
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">05 / DIRECT CHANNEL</span>
+                        <h2 class="font-serif text-4xl md:text-6xl font-bold text-white mt-1">Let's start a conversation.</h2>
+                    </div>
+
+                    <p class="text-forest-300 text-base md:text-lg max-w-xl font-light">
+                        Always interested in developer, system design, data structures discussion, and internship or entry SDE opportunities. Drop a query or invite!
+                    </p>
+
+                    <!-- Contact Details cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        
+                        <a href="mailto:kumarkarthik84192@gmail.com" class="group bg-forest-950 p-6 rounded-xl border border-forest-800 hover:border-forest-500 transition-all flex items-center space-x-4">
+                            <div class="p-3 bg-forest-900 rounded-lg text-forest-300 group-hover:text-forest-100 transition-colors">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-forest-400 block uppercase tracking-wider">Email Address</span>
+                                <span class="text-sm font-semibold text-white break-all">kumarkarthik84192@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <div class="bg-forest-950 p-6 rounded-xl border border-forest-800 flex items-center space-x-4">
+                            <div class="p-3 bg-forest-900 rounded-lg text-forest-300">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-forest-400 block uppercase tracking-wider">Contact Number</span>
+                                <span class="text-sm font-semibold text-white">+91 8309050474</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Developer Profiles -->
+                    <div class="pt-8 border-t border-forest-800/80">
+                        <span class="text-xs text-forest-400 block uppercase tracking-widest mb-4">Competitive Coding & Networks</span>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 bg-forest-950 px-4 py-2 rounded-lg border border-forest-800 hover:border-forest-600 hover:text-white transition-all text-sm">
+                                <i data-lucide="code" class="w-4 h-4 text-forest-400"></i>
+                                <span>LeetCode Profile</span>
+                            </a>
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 bg-forest-950 px-4 py-2 rounded-lg border border-forest-800 hover:border-forest-600 hover:text-white transition-all text-sm">
+                                <i data-lucide="github" class="w-4 h-4 text-forest-400"></i>
+                                <span>GitHub Workspace</span>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 bg-forest-950 px-4 py-2 rounded-lg border border-forest-800 hover:border-forest-600 hover:text-white transition-all text-sm">
+                                <i data-lucide="linkedin" class="w-4 h-4 text-forest-400"></i>
+                                <span>LinkedIn Link</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer absolute note -->
+            <div class="absolute bottom-6 left-6 md:left-24 text-[10px] text-forest-600 flex items-center space-x-2 uppercase">
+                <span>© 2026 Bogimi Karthik Naidu</span>
+                <span>•</span>
+                <span>Assigned Ref ID: 23R11A0597</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT CONTROLLER -->
+    <script>
+        // Init Lucide Icons instantly
+        lucide.createIcons();
+
+        // Get DOM references
+        const container = document.getElementById('viewportContainer');
+        const bullets = document.querySelectorAll('.bullet-indicator');
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const progressBar = document.getElementById('progressBar');
+
+        // Scroll helper function for desktop (snap scroll)
+        function scrollToSection(index) {
+            const isDesktop = window.innerWidth >= 768;
+            if (isDesktop) {
+                container.scrollTo({
+                    left: window.innerWidth * index,
+                    behavior: 'smooth'
+                });
+            } else {
+                const targetId = ['hero', 'about', 'skills', 'projects', 'journey', 'contact'][index];
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+            updateActiveIndicator(index);
+        }
+
+        // Active State indicator update based on position
+        function updateActiveIndicator(index) {
+            bullets.forEach((el, idx) => {
+                if (idx === index) {
+                    el.classList.add('bg-forest-300', 'scale-125');
+                    el.classList.remove('bg-forest-800');
+                } else {
+                    el.classList.remove('bg-forest-300', 'scale-125');
+                    el.classList.add('bg-forest-800');
+                }
+            });
+
+            navBtns.forEach((el, idx) => {
+                if (idx === index) {
+                    el.classList.add('text-forest-300');
+                    el.classList.remove('text-forest-500');
+                } else {
+                    el.classList.remove('text-forest-300');
+                    el.classList.add('text-forest-500');
+                }
+            });
+
+            // Calculate progress percent
+            const percent = ((index) / 5) * 100;
+            progressBar.style.width = `${percent}%`;
+        }
+
+        // Event listener for horizontal container scrolling (Desktop Snap-scroll sync)
+        container.addEventListener('scroll', () => {
+            if (window.innerWidth >= 768) {
+                const scrollLeft = container.scrollLeft;
+                const width = window.innerWidth;
+                const activeIndex = Math.round(scrollLeft / width);
+                updateActiveIndicator(activeIndex);
+            }
+        });
+
+        // Event listener for vertical viewport scrolling sync (Mobile fallback)
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth < 768) {
+                const sections = ['hero', 'about', 'skills', 'projects', 'journey', 'contact'];
+                let activeIndex = 0;
+                let minDiff = Infinity;
+                
+                sections.forEach((id, index) => {
+                    const rect = document.getElementById(id).getBoundingClientRect();
+                    const diff = Math.abs(rect.top);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        activeIndex = index;
+                    }
+                });
+                updateActiveIndicator(activeIndex);
+            }
+        });
+
+        // Mouse Wheel Horizontal Scroll Intercept (Optional helper for standard vertical scrolling mousewheels)
+        container.addEventListener('wheel', (e) => {
+            if (window.innerWidth >= 768) {
+                // Only intercept vertical mouse wheel to move horizontal container
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    container.scrollLeft += e.deltaY;
+                }
+            }
+        });
+
+        // Initialize progress bar width on load
+        updateActiveIndicator(0);
+    </script>
+</body>
+</html>
