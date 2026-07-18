@@ -3,678 +3,946 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bogimi Karthik Naidu | SDE Portfolio</title>
+    <title>Bogimi Karthik Naidu | Portfolio</title>
     
-    <!-- Initials SVG Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100%25' height='100%25' fill='%230b1610'/%3E%3Ctext x='50%25' y='55%25' font-family='serif' font-weight='bold' font-size='42' fill='%2352b788' dominant-baseline='middle' text-anchor='middle'%3EBKN%3C/text%3E%3C/svg%3E">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio of Bogimi Karthik Naidu - Computer Science Undergraduate, Full-Stack Developer & AI Enthusiast.">
+    <meta name="keywords" content="Bogimi Karthik Naidu, Karthik Naidu, Software Engineer, Java Developer, MERN Stack, AI, Deep Fake Detection, Portfolio">
+    <meta name="author" content="Bogimi Karthik Naidu">
     
-    <!-- Google Fonts: Playfair Display + Source Sans 3 -->
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Bogimi Karthik Naidu | Portfolio">
+    <meta property="og:description" content="Computer Science Undergraduate (Class of 2027) & Software Development Engineer.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://karthik9724.github.io">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons Library -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Tailwind CSS with custom configuration -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration -->
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Source Sans 3"', 'sans-serif'],
-                    },
                     colors: {
-                        forest: {
-                            950: '#050a07',
-                            900: '#0b1610',
-                            800: '#112218',
-                            700: '#1b3525',
-                            600: '#274e37',
-                            500: '#386f4e',
-                            400: '#4fa171',
-                            300: '#72be91',
-                            200: '#9cd5b4',
-                            100: '#c5ebd3',
-                            50: '#eef8f2',
+                        brand: {
+                            50: '#FFF1F2',
+                            100: '#FFE4E6',
+                            200: '#FECDD3',
+                            500: '#F43F5E', // Rose Accent
+                            600: '#E11D48',
+                            900: '#881337',
                         },
-                        gold: {
-                            400: '#f4a261',
-                            500: '#e76f51',
-                        }
+                        darkBg: '#0B0F19',
+                        darkCard: '#151D30',
+                    },
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['"Work Sans"', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    
+
+    <!-- Embedded CSS Custom Styles -->
     <style>
-        /* Custom scrollbars */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #050a07;
+            background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: #1b3525;
-            border-radius: 3px;
+            background: #E11D48;
+            border-radius: 4px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4fa171;
+        .dark ::-webkit-scrollbar-track {
+            background: #0B0F19;
         }
 
-        /* Desktop horizontal scroll snapping logic */
-        @media (min-width: 768px) {
-            .horizontal-container {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                scroll-behavior: smooth;
-                width: 100vw;
-                height: 100vh;
-            }
-            .snap-section {
-                flex-shrink: 0;
-                width: 100vw;
-                height: 100vh;
-                scroll-snap-align: start;
-                overflow-y: auto;
-            }
+        /* Glassmorphism utility */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(21, 29, 48, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Timeline connector line */
+        .timeline-line {
+            background: linear-gradient(to bottom, #F43F5E 0%, #E11D48 100%);
         }
     </style>
 </head>
-<body class="bg-forest-950 text-forest-100 font-sans selection:bg-forest-400 selection:text-forest-950 overflow-x-hidden md:overflow-hidden">
+<body class="bg-gray-50 text-gray-900 font-sans transition-colors duration-300 dark:bg-darkBg dark:text-gray-100 antialiased">
 
-    <!-- Floating Header -->
-    <header class="fixed top-0 left-0 w-full z-40 bg-forest-950/80 backdrop-blur-md border-b border-forest-900 px-6 py-4 md:px-12 flex justify-between items-center">
-        <div>
-            <a href="#hero" class="font-serif text-lg md:text-xl font-bold tracking-tight text-forest-50 hover:text-forest-300 transition-colors">
-                BOGIMI KARTHIK NAIDU
+    <script>
+        // Init SVG favicon using initials "BKN"
+        const svgFavicon = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+            <rect width="100" height="100" rx="20" fill="#E11D48"/>
+            <text x="50" y="60" font-family="JetBrains Mono, monospace" font-size="36" font-weight="bold" fill="white" text-anchor="middle">BKN</text>
+        </svg>`;
+        const docFavicon = document.createElement('link');
+        docFavicon.rel = 'icon';
+        docFavicon.href = 'data:image/svg+xml,' + encodeURIComponent(svgFavicon);
+        document.head.appendChild(docFavicon);
+    </script>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200/50 dark:border-gray-800/50 glass py-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="#hero" class="flex items-center space-x-2">
+                <span class="w-8 h-8 rounded bg-brand-600 flex items-center justify-center text-white font-mono font-bold text-sm">B</span>
+                <span class="font-mono font-bold tracking-tight text-lg hidden sm:inline">karthik.dev</span>
             </a>
+
+            <!-- Desktop Nav Menu -->
+            <div class="hidden md:flex items-center space-x-8 font-mono text-xs uppercase tracking-wider">
+                <a href="#about" class="nav-link text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-500 transition-colors">About</a>
+                <a href="#journey" class="nav-link text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-500 transition-colors">Journey</a>
+                <a href="#projects" class="nav-link text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-500 transition-colors">Projects</a>
+                <a href="#skills" class="nav-link text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-500 transition-colors">Skills</a>
+                <a href="#certifications" class="nav-link text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-500 transition-colors">Certs</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-500 transition-colors">Contact</a>
+            </div>
+
+            <!-- Utilities (Theme Toggle & Mobile Menu Btn) -->
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
+                    <i data-lucide="moon" id="theme-icon-dark" class="w-4 h-4 text-gray-600 dark:text-gray-300 hidden dark:block"></i>
+                    <i data-lucide="sun" id="theme-icon-light" class="w-4 h-4 text-gray-600 dark:text-gray-300 block dark:hidden"></i>
+                </button>
+                <button id="mobile-menu-btn" class="p-2 md:hidden rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle navigation menu">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
         </div>
-        
-        <!-- Desktop Horizontal Progress Indicators -->
-        <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold tracking-wider uppercase">
-            <button onclick="scrollToSection(0)" class="nav-btn group flex items-center space-x-2 text-forest-300 hover:text-white transition-colors" data-index="0">
-                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">01</span>
-                <span>Home</span>
-            </button>
-            <button onclick="scrollToSection(1)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="1">
-                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">02</span>
-                <span>About</span>
-            </button>
-            <button onclick="scrollToSection(2)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="2">
-                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">03</span>
-                <span>Skills</span>
-            </button>
-            <button onclick="scrollToSection(3)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="3">
-                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">04</span>
-                <span>Projects</span>
-            </button>
-            <button onclick="scrollToSection(4)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="4">
-                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">05</span>
-                <span>Journey</span>
-            </button>
-            <button onclick="scrollToSection(5)" class="nav-btn group flex items-center space-x-2 text-forest-500 hover:text-white transition-colors" data-index="5">
-                <span class="text-[10px] text-forest-500 group-hover:text-forest-300 transition-all">06</span>
-                <span>Connect</span>
-            </button>
-        </nav>
 
-        <!-- Social Media Shortcuts (Header Right) -->
-        <div class="flex items-center space-x-4">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2 text-forest-400 hover:text-forest-200 transition-colors" title="GitHub">
-                <i data-lucide="github" class="w-5 h-5"></i>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-2 text-forest-400 hover:text-forest-200 transition-colors" title="LinkedIn">
-                <i data-lucide="linkedin" class="w-5 h-5"></i>
-            </a>
-           <a href="KARTHIK-RESUME.pdf" download
-class="px-4 py-2 bg-forest-700 hover:bg-forest-600 text-white rounded-lg text-sm font-semibold transition-all">
-    Download Resume
-</a>
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 glass border-b border-gray-200 dark:border-gray-800 py-6 px-6 flex flex-col space-y-4 font-mono text-xs uppercase tracking-wider">
+            <a href="#about" class="mobile-nav-link text-gray-600 dark:text-gray-300 py-2">About</a>
+            <a href="#journey" class="mobile-nav-link text-gray-600 dark:text-gray-300 py-2">Journey</a>
+            <a href="#projects" class="mobile-nav-link text-gray-600 dark:text-gray-300 py-2">Projects</a>
+            <a href="#skills" class="mobile-nav-link text-gray-600 dark:text-gray-300 py-2">Skills</a>
+            <a href="#certifications" class="mobile-nav-link text-gray-600 dark:text-gray-300 py-2">Certifications</a>
+            <a href="#contact" class="mobile-nav-link text-gray-600 dark:text-gray-300 py-2">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
+        <!-- Interactive Tech Grid Background -->
+        <div class="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.08]" style="background-image: radial-gradient(#F43F5E 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-12 py-12 flex flex-col items-center text-center z-10 w-full">
+            <!-- Animated intro pill -->
+            <div class="inline-flex items-center space-x-2 bg-brand-50 border border-brand-200 dark:bg-brand-900/30 dark:border-brand-900/50 px-4 py-1.5 rounded-full mb-8 transform translate-y-4 opacity-0 transition-all duration-700 delay-100 scroll-reveal">
+                <span class="w-2 h-2 rounded-full bg-brand-600 dark:bg-brand-500 animate-pulse"></span>
+                <span class="text-xs font-mono font-bold tracking-wide text-brand-600 dark:text-brand-200">SOFTWARE DEVELOPMENT ENGINEER IN TRAINING</span>
+            </div>
+
+            <!-- Hero Headline -->
+            <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-4 max-w-5xl leading-none scroll-reveal transform translate-y-4 opacity-0 transition-all duration-700 delay-200 text-gray-900 dark:text-white">
+                BOGIMI KARTHIK <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-brand-600">NAIDU</span>
+            </h1>
+
+            <!-- Animated Typing Tagline -->
+            <div class="h-8 mb-8 scroll-reveal transform translate-y-4 opacity-0 transition-all duration-700 delay-300">
+                <p class="text-lg md:text-2xl font-mono text-gray-500 dark:text-gray-400 font-semibold">
+                    &lt; <span id="typewriter"></span> <span class="animate-pulse">|</span> &gt;
+                </p>
+            </div>
+
+            <!-- Premium Intro / Current Focus Card -->
+            <div class="max-w-2xl bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800/80 p-6 rounded-2xl shadow-xl shadow-gray-100 dark:shadow-none mb-10 text-left scroll-reveal transform translate-y-4 opacity-0 transition-all duration-700 delay-400">
+                <div class="flex items-start space-x-4">
+                    <div class="p-3 bg-brand-50 dark:bg-brand-900/20 rounded-xl text-brand-600 dark:text-brand-500">
+                        <i data-lucide="terminal" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-mono font-bold text-sm text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1">Current Focus</h4>
+                        <p class="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed font-sans">
+                            Developing robust full-stack applications with the MERN ecosystem and deploying artificial intelligence deep learning algorithms (CNN + Attention) to combat visual data forgery.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto scroll-reveal transform translate-y-4 opacity-0 transition-all duration-700 delay-500">
+                <a href="#contact" class="px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-mono text-sm uppercase tracking-wider font-bold rounded-xl shadow-lg shadow-brand-500/20 hover:shadow-brand-500/40 transform hover:-translate-y-0.5 transition-all text-center flex items-center justify-center space-x-2">
+                    <span>Contact Me</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="https://github.com/karthik9724" target="_blank" class="px-8 py-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 font-mono text-sm uppercase tracking-wider font-bold rounded-xl transition-all flex items-center justify-center space-x-2">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>GitHub Profile</span>
+                </a>
+            </div>
+            
+            <!-- Animated Mouse Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-70">
+                <span class="text-[10px] font-mono tracking-widest text-gray-400 dark:text-gray-500 uppercase mb-2">Scroll Down</span>
+                <div class="w-6 h-10 border-2 border-gray-300 dark:border-gray-700 rounded-full flex justify-center p-1">
+                    <div class="w-1.5 h-3 bg-brand-600 dark:bg-brand-500 rounded-full animate-bounce"></div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Navigation Scroll Indicators (Desktop Right Vertical Bar) -->
-    <div class="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col space-y-4">
-        <button onclick="scrollToSection(0)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-300 transition-all" data-index="0" title="Home"></button>
-        <button onclick="scrollToSection(1)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="1" title="About"></button>
-        <button onclick="scrollToSection(2)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="2" title="Skills"></button>
-        <button onclick="scrollToSection(3)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="3" title="Projects"></button>
-        <button onclick="scrollToSection(4)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="4" title="Journey"></button>
-        <button onclick="scrollToSection(5)" class="bullet-indicator w-2.5 h-2.5 rounded-full bg-forest-800 hover:bg-forest-600 transition-all" data-index="5" title="Connect"></button>
-    </div>
-
-    <!-- Active Indicator Bar top edge -->
-    <div class="fixed top-0 left-0 h-[3px] bg-forest-400 transition-all duration-300 z-50" id="progressBar" style="width: 0%"></div>
-
-    <!-- MAIN IMMERSIVE VIEWPORT CONTAINER -->
-    <main class="horizontal-container w-full min-h-screen pt-16 md:pt-0" id="viewportContainer">
-
-        <!-- SECTION 1: HERO -->
-        <section id="hero" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950 relative">
-            <!-- Decorative background vector details -->
-            <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
-                <div class="absolute -top-12 -left-12 w-96 h-96 rounded-full border border-forest-400"></div>
-                <div class="absolute bottom-12 right-24 w-[30rem] h-[30rem] rounded-full border border-forest-400/50"></div>
-            </div>
-
-            <div class="max-w-4xl z-10 space-y-6">
-                <p class="text-xs md:text-sm font-semibold tracking-[0.25em] text-forest-400 uppercase">COMPUTER SCIENCE UNDERGRADUATE · CLASS OF 2027</p>
-                <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white leading-none">
-                    Bogimi Karthik <span class="italic text-forest-300 font-light block md:inline">Naidu</span>
-                </h1>
-                <p class="font-serif text-lg md:text-2xl text-forest-200 italic max-w-2xl font-light">
-                    Building robust, intelligent Web Applications & Full-Stack AI Solutions.
-                </p>
+    <!-- About Section -->
+    <section id="about" class="py-32 border-t border-gray-100 dark:border-gray-900 bg-white dark:bg-darkBg relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
                 
-                <div class="pt-6 flex flex-wrap gap-4">
-                    <button onclick="scrollToSection(1)" class="px-6 py-3 bg-forest-700 hover:bg-forest-600 text-white rounded-lg font-semibold tracking-wide transition-all duration-300 shadow-md flex items-center space-x-2">
-                        <span>Explore Portfolio</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                    <a href="#contact" onclick="scrollToSection(5)" class="px-6 py-3 border border-forest-700 hover:bg-forest-900/40 text-forest-200 hover:text-white rounded-lg font-semibold tracking-wide transition-all duration-300">
-                        Get In Touch
-                    </a>
-                </div>
-            </div>
-
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-8 left-6 md:left-24 animate-bounce hidden md:flex items-center space-x-2 text-xs text-forest-500 uppercase tracking-widest">
-                <span>Swipe or scroll horizontally</span>
-                <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </div>
-        </section>
-
-        <!-- SECTION 2: ABOUT -->
-        <section id="about" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-900 border-t md:border-t-0 md:border-l border-forest-800">
-            <div class="max-w-5xl py-12">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Large Section Title (Editorial Column) -->
+                <div class="lg:col-span-5 scroll-reveal transform -translate-x-4 opacity-0 transition-all duration-700">
+                    <span class="text-brand-600 dark:text-brand-500 font-mono font-bold text-xs uppercase tracking-widest block mb-4">// Who I Am</span>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6">
+                        Pioneering digital answers with modern stacks and smart pipelines.
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-lg font-sans mb-8">
+                        I am a Computer Science undergraduate at Geethanjali College of Engineering & Technology, graduating in 2027. My technical approach combines algorithmic rigors in Java with pragmatic full-stack development using MongoDB, Express, React, and Node.js. 
+                    </p>
                     
-                    <!-- Left side: Editorial Pull Quote -->
-                    <div class="lg:col-span-7 space-y-6">
-                        <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">01 / OVERVIEW</span>
-                        <h2 class="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-                            Translating intricate algorithms and complex database structures into fluid visual realities.
-                        </h2>
-                        <p class="text-forest-300 text-base md:text-lg leading-relaxed font-light">
-                            Computer Science undergraduate with advanced competency in Java, Data Structures, Algorithms, full-stack web architectures, and Deep Learning techniques. Driven to architect production-grade, modular SDE systems that deliver user-centric value and optimize deep-tier performance.
+                    <!-- Code stats block -->
+                    <div class="grid grid-cols-2 gap-6 pt-6 border-t border-gray-100 dark:border-gray-800">
+                        <div>
+                            <h5 class="text-3xl font-mono font-black text-brand-600 dark:text-brand-500">300+</h5>
+                            <p class="text-xs font-mono text-gray-500 uppercase tracking-widest">DSA Problems Solved</p>
+                        </div>
+                        <div>
+                            <h5 class="text-3xl font-mono font-black text-brand-600 dark:text-brand-500">1st</h5>
+                            <p class="text-xs font-mono text-gray-500 uppercase tracking-widest">Inter-College Algorythm Prize</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bento-style Highlights Layout -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 scroll-reveal transform translate-x-4 opacity-0 transition-all duration-700">
+                    
+                    <!-- Highlight Card 1 -->
+                    <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800/60 transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-6">
+                            <i data-lucide="code-2" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Core Engineering</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-sans">
+                            Grounded deeply in Data Structures & Algorithms, Object-Oriented Principles, DBMS architecture, Operating Systems, and secure Computer Networks.
                         </p>
                     </div>
 
-                    <!-- Right side: Clean Metric Grid -->
-                    <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                        <div class="bg-forest-950 p-6 rounded-xl border border-forest-800/80 hover:border-forest-700 transition-all flex flex-col justify-between">
-                            <span class="text-3xl md:text-4xl font-serif text-forest-300 font-bold">8.23</span>
-                            <span class="text-xs text-forest-400 uppercase tracking-wider mt-4">Current B.Tech CGPA</span>
+                    <!-- Highlight Card 2 -->
+                    <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800/60 transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-6">
+                            <i data-lucide="globe" class="w-6 h-6"></i>
                         </div>
-                        <div class="bg-forest-950 p-6 rounded-xl border border-forest-800/80 hover:border-forest-700 transition-all flex flex-col justify-between">
-                            <span class="text-3xl md:text-4xl font-serif text-forest-300 font-bold">300+</span>
-                            <span class="text-xs text-forest-400 uppercase tracking-wider mt-4">Coding Problems Solved</span>
+                        <h4 class="text-lg font-bold mb-2">Full-Stack Ecosystems</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-sans">
+                            Building reliable RESTful APIs, modern dynamic Web UI architectures, database modeling (MongoDB & SQL), and smooth operational microservice patterns.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Card 3 -->
+                    <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800/60 transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-6">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
                         </div>
-                        <div class="bg-forest-950 p-6 rounded-xl border border-forest-800/80 hover:border-forest-700 transition-all flex flex-col justify-between col-span-2">
-                            <span class="text-lg font-serif text-forest-50 font-bold flex items-center space-x-2">
-                                <i data-lucide="trophy" class="w-5 h-5 text-forest-300 shrink-0"></i>
-                                <span>Algorythm Winner</span>
+                        <h4 class="text-lg font-bold mb-2">AI-Driven Integrity</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-sans">
+                            Implementing high-performing Convolutional Neural Networks and Spatial Attention Mechanics to discover deepfake metadata on visual mediums.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Card 4 -->
+                    <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800/60 transform hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6">
+                            <i data-lucide="cloud" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Salesforce Administration</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-sans">
+                            Trained in custom solution design utilizing Apex language controllers, LWC components, SOQL schema definitions, and automated flow builds.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vertical Journey Timeline Section -->
+    <section id="journey" class="py-32 bg-gray-50 dark:bg-darkBg relative z-10 border-t border-b border-gray-100 dark:border-gray-900/60">
+        <div class="max-w-5xl mx-auto px-6">
+            
+            <div class="text-center max-w-2xl mx-auto mb-20 scroll-reveal transform translate-y-4 opacity-0 transition-all duration-700">
+                <span class="text-brand-600 dark:text-brand-500 font-mono font-bold text-xs uppercase tracking-widest block mb-4">// My Path</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight">The Academic & Professional Road</h2>
+                <p class="text-gray-500 dark:text-gray-400 font-sans mt-3">A journey mapping theoretical engineering to product design, research, and competitive excellence.</p>
+            </div>
+
+            <!-- Timeline wrapper -->
+            <div class="relative pl-6 sm:pl-0 sm:grid sm:grid-cols-9 gap-4">
+                
+                <!-- Central vertical line (Desktop view) -->
+                <div class="absolute left-6 sm:left-1/2 top-4 bottom-4 w-1 timeline-line rounded-full transform sm:-translate-x-1/2 z-0"></div>
+
+                <!-- Journey Item 1: B.Tech (GCET) -->
+                <div class="relative sm:grid sm:grid-cols-9 gap-4 mb-16 w-full z-10 group scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700">
+                    <div class="col-span-4 sm:text-right hidden sm:block pr-8 self-center">
+                        <span class="text-xs font-mono text-brand-600 dark:text-brand-400 tracking-wider font-bold">2023 - 2027</span>
+                        <h4 class="text-2xl font-black text-gray-900 dark:text-white mt-1">Geethanjali College of Eng. & Tech.</h4>
+                        <p class="text-sm font-mono text-gray-500 mt-1">B.Tech in Computer Science & Engineering</p>
+                    </div>
+                    <div class="col-span-1 flex items-center justify-center">
+                        <div class="w-5 h-5 rounded-full border-4 border-gray-50 dark:border-darkBg bg-brand-600 group-hover:scale-125 transition-transform duration-300 shadow-lg shadow-brand-500/50"></div>
+                    </div>
+                    <div class="col-span-4 pl-8 sm:pl-0 sm:self-center">
+                        <!-- Mobile text details fallback -->
+                        <div class="sm:hidden mb-1">
+                            <span class="text-xs font-mono text-brand-600 dark:text-brand-400 tracking-wider font-bold">2023 - 2027</span>
+                        </div>
+                        <h4 class="text-xl sm:hidden font-black text-gray-900 dark:text-white">Geethanjali College of Engineering & Technology</h4>
+                        <p class="text-xs sm:hidden font-mono text-gray-500 mt-1">B.Tech in Computer Science & Engineering</p>
+                        
+                        <div class="bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-sans mb-3">
+                                Advancing foundations in engineering core metrics. Consistently optimizing logic paradigms and maintaining active performance benchmarks.
+                            </p>
+                            <span class="inline-flex items-center space-x-2 px-3 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-300 text-xs font-mono font-bold rounded-lg">
+                                <span>CGPA: 8.23</span>
                             </span>
-                            <span class="text-xs text-forest-400 uppercase tracking-wider mt-2">1st Prize Inter-College Coding Contest</span>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3: SKILLS -->
-        <section id="skills" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-950 border-t md:border-t-0 md:border-l border-forest-900">
-            <div class="max-w-6xl py-12">
-                <div class="mb-10">
-                    <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">02 / COMPETENCIES</span>
-                    <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mt-1">Technical Stack</h2>
-                    <p class="text-forest-400 text-sm mt-2">Grouped and specialized domains compiled during my academic & development career</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <!-- Programming & Core -->
-                    <div class="bg-forest-900/60 p-6 rounded-xl border border-forest-800 hover:border-forest-600 transition-all">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="p-2.5 rounded-lg bg-forest-950 text-forest-300">
-                                <i data-lucide="code-2" class="w-5 h-5"></i>
-                            </div>
-                            <h3 class="font-serif text-lg font-bold text-forest-100">Languages & Core</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm text-forest-300">
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>Java (OOP, Multithreading)</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Advanced</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>C Programming</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Core</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>Data Structures & Alg</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Highly Proficient</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>OS & Computer Networks</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Theoretical</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Web & Databases -->
-                    <div class="bg-forest-900/60 p-6 rounded-xl border border-forest-800 hover:border-forest-600 transition-all">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="p-2.5 rounded-lg bg-forest-950 text-forest-300">
-                                <i data-lucide="database" class="w-5 h-5"></i>
-                            </div>
-                            <h3 class="font-serif text-lg font-bold text-forest-100">Web & Databases</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm text-forest-300">
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>React.js / Node.js / Express</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Full MERN</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>MongoDB / MySQL / SQLite</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Relational & NoSQL</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>JavaScript (ES6+)</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Proficient</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>HTML5 / CSS3 / Tailwind</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Frontend UI</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Cloud, Salesforce & Tools -->
-                    <div class="bg-forest-900/60 p-6 rounded-xl border border-forest-800 hover:border-forest-600 transition-all">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="p-2.5 rounded-lg bg-forest-950 text-forest-300">
-                                <i data-lucide="cloud" class="w-5 h-5"></i>
-                            </div>
-                            <h3 class="font-serif text-lg font-bold text-forest-100">Salesforce & Tools</h3>
-                        </div>
-                        <ul class="space-y-2 text-sm text-forest-300">
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>Apex, SOQL, LWC</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Developer</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>Flow Builder & Trailhead</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Admin</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>Git & GitHub Workflows</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">VCS</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-forest-950/40 px-3 py-2 rounded">
-                                <span>VS Code, Postman & REST</span>
-                                <span class="text-[10px] bg-forest-800 px-1.5 py-0.5 rounded text-forest-300">Environment</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 4: PROJECTS -->
-        <section id="projects" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-900 border-t md:border-t-0 md:border-l border-forest-800">
-            <div class="max-w-6xl py-12">
-                <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between">
-                    <div>
-                        <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">03 / CREATIVE BUILDS</span>
-                        <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mt-1">Featured Ventures</h2>
                     </div>
                 </div>
 
-                <!-- Horizontal cards flex-wrap layout -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <!-- Project 1: EventSphere -->
-                    <div class="group bg-forest-950 rounded-xl overflow-hidden border border-forest-800 hover:border-forest-500 transition-all flex flex-col justify-between h-full p-6 space-y-4">
-                        <div>
-                            <div class="flex items-start justify-between">
-                                <h3 class="font-serif text-xl md:text-2xl font-bold text-white group-hover:text-forest-300 transition-colors">EventSphere</h3>
-                                <span class="text-[10px] text-forest-400 border border-forest-800 rounded-full px-2 py-0.5">MERN Stack</span>
-                            </div>
-                            <p class="text-forest-400 text-xs mt-1 uppercase tracking-widest">College Event Management Platform</p>
-                            
-                            <p class="text-forest-300 text-sm mt-4 leading-relaxed font-light">
-                                Developed a robust college-wide events system incorporating MongoDB, Express, React, and Node.js. Optimized back-end interactions with elegant REST architectures, robust user authentication modules, registration processes, and custom administrative controls.
+                <!-- Journey Item 2: Narayana Junior College -->
+                <div class="relative sm:grid sm:grid-cols-9 gap-4 mb-16 w-full z-10 group scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700">
+                    <div class="col-span-4 pl-8 sm:pl-0 sm:text-right sm:self-center">
+                        <div class="sm:hidden mb-1">
+                            <span class="text-xs font-mono text-brand-600 dark:text-brand-400 tracking-wider font-bold">2021 - 2023</span>
+                        </div>
+                        <h4 class="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">Narayana Junior College</h4>
+                        <p class="text-sm font-mono text-gray-500 mt-1">Intermediate (MPC)</p>
+                        
+                        <div class="bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow mt-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-sans mb-3">
+                                Rigorous training in advanced mathematics, analytical physics, and kinetic systems, forming robust computational problem-solving faculties.
                             </p>
+                            <span class="inline-flex items-center space-x-2 px-3 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-300 text-xs font-mono font-bold rounded-lg">
+                                <span>Score: 972 / 1000</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-span-1 flex items-center justify-center">
+                        <div class="w-5 h-5 rounded-full border-4 border-gray-50 dark:border-darkBg bg-brand-600 group-hover:scale-125 transition-transform duration-300 shadow-lg shadow-brand-500/50"></div>
+                    </div>
+                    <div class="col-span-4 hidden sm:block pl-8 self-center">
+                        <span class="text-xs font-mono text-brand-600 dark:text-brand-400 tracking-wider font-bold">2021 - 2023</span>
+                        <h4 class="text-2xl font-black text-gray-900 dark:text-white mt-1">Narayana Junior College</h4>
+                        <p class="text-sm font-mono text-gray-500 mt-1">Intermediate (MPC)</p>
+                    </div>
+                </div>
 
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">MongoDB</span>
-                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">React.js</span>
-                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">Node.js</span>
-                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">Express</span>
-                            </div>
+                <!-- Journey Item 3: Vijayanikethan High School -->
+                <div class="relative sm:grid sm:grid-cols-9 gap-4 w-full z-10 group scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700">
+                    <div class="col-span-4 sm:text-right hidden sm:block pr-8 self-center">
+                        <span class="text-xs font-mono text-brand-600 dark:text-brand-400 tracking-wider font-bold">2020 - 2021</span>
+                        <h4 class="text-2xl font-black text-gray-900 dark:text-white mt-1">Vijayanikethan High School</h4>
+                        <p class="text-sm font-mono text-gray-500 mt-1">SSC (Secondary School Certificate)</p>
+                    </div>
+                    <div class="col-span-1 flex items-center justify-center">
+                        <div class="w-5 h-5 rounded-full border-4 border-gray-50 dark:border-darkBg bg-brand-600 group-hover:scale-125 transition-transform duration-300 shadow-lg shadow-brand-500/50"></div>
+                    </div>
+                    <div class="col-span-4 pl-8 sm:pl-0 sm:self-center">
+                        <div class="sm:hidden mb-1">
+                            <span class="text-xs font-mono text-brand-600 dark:text-brand-400 tracking-wider font-bold">2020 - 2021</span>
+                        </div>
+                        <h4 class="text-xl sm:hidden font-black text-gray-900 dark:text-white">Vijayanikethan High School</h4>
+                        <p class="text-xs sm:hidden font-mono text-gray-500 mt-1">SSC</p>
+                        
+                        <div class="bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-sans mb-3">
+                                Concluded board matrices with absolute grades. Developed early logical reasoning, systemic reasoning, and computer fundamental concepts.
+                            </p>
+                            <span class="inline-flex items-center space-x-2 px-3 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-300 text-xs font-mono font-bold rounded-lg">
+                                <span>Perfect Score: 600 / 600</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 bg-white dark:bg-darkBg relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            
+            <div class="text-center max-w-2xl mx-auto mb-24 scroll-reveal transform translate-y-4 opacity-0 transition-all duration-700">
+                <span class="text-brand-600 dark:text-brand-500 font-mono font-bold text-xs uppercase tracking-widest block mb-4">// Engineering In Action</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight">Featured Projects</h2>
+                <p class="text-gray-500 dark:text-gray-400 font-sans mt-3">Concrete software builds solving high-utility real-world enterprise requirements.</p>
+            </div>
+
+            <!-- Custom Projects Alternate Left-Right Grid -->
+            <div class="space-y-32">
+                
+                <!-- Project Card 1: EventSphere (Left Text, Right Visual Design Card) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-6 scroll-reveal transform -translate-x-6 opacity-0 transition-all duration-700">
+                        <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-bold tracking-widest block mb-3">FULL-STACK ENTERPRISE SYSTEM</span>
+                        <h3 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">EventSphere</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-sans mb-6">
+                            An end-to-end college event coordination and directory environment. Designed modular REST microservices supporting custom administrative controllers and automated attendee registration metrics.
+                        </p>
+                        
+                        <!-- Project features bullet list -->
+                        <ul class="space-y-3 mb-8 text-sm text-gray-500 dark:text-gray-400">
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-600"></i>
+                                <span>Secure user authentication & CRUD authorization layers</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-600"></i>
+                                <span>Integrated admin dashboard representing metrics in real-time</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-600"></i>
+                                <span>Highly responsive mobile first layouts utilizing React state</span>
+                            </li>
+                        </ul>
+
+                        <!-- Tech Chips -->
+                        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">MongoDB</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">Express.js</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">React.js</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">Node.js</span>
                         </div>
 
-                        <div class="pt-4 flex items-center space-x-4">
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold tracking-wider uppercase text-forest-300 hover:text-white flex items-center space-x-1.5 transition-colors">
+                        <!-- Action Link -->
+                        <div class="flex items-center space-x-4">
+                            <a href="https://github.com/karthik9724" target="_blank" class="px-5 py-3 bg-gray-950 hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 text-white font-mono text-xs uppercase tracking-wider font-bold rounded-lg transition-all flex items-center space-x-2">
                                 <i data-lucide="github" class="w-4 h-4"></i>
                                 <span>Code Repository</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Project 2: Deep Fake Detection -->
-                    <div class="group bg-forest-950 rounded-xl overflow-hidden border border-forest-800 hover:border-forest-500 transition-all flex flex-col justify-between h-full p-6 space-y-4">
-                        <div>
-                            <div class="flex items-start justify-between">
-                                <h3 class="font-serif text-xl md:text-2xl font-bold text-white group-hover:text-forest-300 transition-colors">Deep Fake Detector</h3>
-                                <span class="text-[10px] text-forest-400 border border-forest-800 rounded-full px-2 py-0.5">AI / Flask</span>
+                    <!-- Visual Panel 1 -->
+                    <div class="lg:col-span-6 bg-gradient-to-tr from-brand-100 to-rose-500 dark:from-darkCard dark:to-brand-900/30 p-8 rounded-3xl border border-gray-100 dark:border-gray-800/80 scroll-reveal transform translate-x-6 opacity-0 transition-all duration-700">
+                        <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl p-6 relative aspect-video border border-gray-800">
+                            <!-- Shell header mockup -->
+                            <div class="flex space-x-1.5 mb-4 border-b border-gray-800 pb-3">
+                                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                                <span class="text-xs font-mono text-gray-600 pl-4">eventsphere-api-runtime</span>
                             </div>
-                            <p class="text-forest-400 text-xs mt-1 uppercase tracking-widest">CNN & Attention Application</p>
-                            
-                            <p class="text-forest-300 text-sm mt-4 leading-relaxed font-light">
-                                Fabricated a cutting-edge, deep learning framework focusing on CBAM (Convolutional Block Attention Module), MTCNN face recognition, and Xception CNN topologies. Generates heatmaps via Grad-CAM visualizations on responsive interfaces built on React and Flask.
-                            </p>
-
-                            <div class="flex flex-wrap gap-2 mt-4">
-                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">TensorFlow</span>
-                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">Flask API</span>
-                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">React.js</span>
-                                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-forest-900 text-forest-300">SQLite</span>
+                            <!-- Visual terminal outputs -->
+                            <div class="font-mono text-xs text-gray-400 space-y-2">
+                                <p class="text-emerald-500">&gt; npm run start:api</p>
+                                <p class="text-gray-600">[info] Connecting secure mongo shell connection...</p>
+                                <p class="text-emerald-400">[success] Connected to DB server metrics successfully.</p>
+                                <p class="text-gray-600">[info] Routing REST layer controller mappings...</p>
+                                <p class="text-indigo-400">[info] Server listening seamlessly at HTTP port://8080</p>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="pt-4 flex items-center space-x-4">
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold tracking-wider uppercase text-forest-300 hover:text-white flex items-center space-x-1.5 transition-colors">
+                <!-- Project Card 2: Deep Fake Detection (Right Text, Left Visual Card) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-12">
+                    <!-- Visual Panel 2 (Reversed Column Order on Desktop) -->
+                    <div class="lg:col-span-6 lg:order-2 scroll-reveal transform translate-x-6 opacity-0 transition-all duration-700">
+                        <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-bold tracking-widest block mb-3">AI & DEEP LEARNING INTEGRATION</span>
+                        <h3 class="text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">Deep Fake Detection System</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-sans mb-6">
+                            An advanced image and video analysis microservice capable of predicting and isolating synthetic manipulation. Employs deep residual CNN logic paired with CBAM spatial maps to output granular forgery masks.
+                        </p>
+                        
+                        <!-- Project features bullet list -->
+                        <ul class="space-y-3 mb-8 text-sm text-gray-500 dark:text-gray-400">
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-600"></i>
+                                <span>Utilizes Xception CNN & CBAM spatial attention models</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-600"></i>
+                                <span>MTCNN facial extractor pipeline isolating frame subregions</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="check" class="w-4 h-4 text-brand-600"></i>
+                                <span>Grad-CAM maps representing visualization of target decisions</span>
+                            </li>
+                        </ul>
+
+                        <!-- Tech Chips -->
+                        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">TensorFlow</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">Flask</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">React</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">SQLite</span>
+                        </div>
+
+                        <!-- Action Link -->
+                        <div class="flex items-center space-x-4">
+                            <a href="https://github.com/karthik9724" target="_blank" class="px-5 py-3 bg-gray-950 hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 text-white font-mono text-xs uppercase tracking-wider font-bold rounded-lg transition-all flex items-center space-x-2">
                                 <i data-lucide="github" class="w-4 h-4"></i>
                                 <span>Code Repository</span>
                             </a>
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 5: EDUCATION & TIMELINE -->
-        <section id="journey" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-950 border-t md:border-t-0 md:border-l border-forest-900">
-            <div class="max-w-6xl py-12">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                    
-                    <!-- Left: Educational Milestones -->
-                    <div class="lg:col-span-5 space-y-6">
-                        <div>
-                            <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">04 / BACKGROUND</span>
-                            <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mt-1">Academic Timeline</h2>
-                        </div>
-
-                        <div class="space-y-6 border-l border-forest-800 pl-4 mt-6">
-                            
-                            <!-- Graduation (B.Tech) -->
-                            <div class="relative pl-2 group">
-                                <div class="absolute -left-[21px] top-1.5 w-3.5 h-3.5 rounded-full bg-forest-400 group-hover:scale-125 transition-all"></div>
-                                <span class="text-xs text-forest-400 tracking-wider">2023 — 2027</span>
-                                <h4 class="font-serif text-lg font-bold text-white">B.Tech in Computer Science</h4>
-                                <p class="text-sm text-forest-300">Geethanjali College of Engineering & Technology</p>
-                                <span class="inline-block mt-1 text-xs font-semibold bg-forest-900 px-2.5 py-0.5 rounded text-forest-300">CGPA: 8.23</span>
+                    <!-- Visual Panel 2 Mockup -->
+                    <div class="lg:col-span-6 lg:order-1 bg-gradient-to-tr from-brand-100 to-rose-500 dark:from-darkCard dark:to-brand-900/30 p-8 rounded-3xl border border-gray-100 dark:border-gray-800/80 scroll-reveal transform -translate-x-6 opacity-0 transition-all duration-700">
+                        <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl p-6 relative aspect-video border border-gray-800">
+                            <!-- Shell header mockup -->
+                            <div class="flex space-x-1.5 mb-4 border-b border-gray-800 pb-3">
+                                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                                <span class="text-xs font-mono text-gray-600 pl-4">xception-detector-gradcam</span>
                             </div>
-
-                            <!-- Narayana College -->
-                            <div class="relative pl-2 group">
-                                <div class="absolute -left-[21px] top-1.5 w-3.5 h-3.5 rounded-full bg-forest-700 group-hover:bg-forest-500 transition-all"></div>
-                                <span class="text-xs text-forest-400 tracking-wider">2021 — 2023</span>
-                                <h4 class="font-serif text-lg font-bold text-white">Intermediate MPC</h4>
-                                <p class="text-sm text-forest-300">Narayana Junior College</p>
-                                <span class="inline-block mt-1 text-xs font-semibold bg-forest-900 px-2.5 py-0.5 rounded text-forest-300">Score: 972 / 1000</span>
+                            <!-- Visual terminal outputs -->
+                            <div class="font-mono text-xs text-gray-400 space-y-2">
+                                <p class="text-indigo-400"># Evaluating target media frame vectors...</p>
+                                <p class="text-gray-600">Importing pretrained weights (Keras Xception Model)...</p>
+                                <p class="text-yellow-500">[WARN] Evaluating spatial anomaly detection arrays...</p>
+                                <p class="text-rose-500 font-bold">[CRITICAL] Synth Forgery Detected. Probability Matrix: 99.4%</p>
+                                <p class="text-emerald-400">[success] Grad-CAM heatmap mapped successfully. Saving array.</p>
                             </div>
-
-                            <!-- SSC -->
-                            <div class="relative pl-2 group">
-                                <div class="absolute -left-[21px] top-1.5 w-3.5 h-3.5 rounded-full bg-forest-800 group-hover:bg-forest-600 transition-all"></div>
-                                <span class="text-xs text-forest-400 tracking-wider">2020 — 2021</span>
-                                <h4 class="font-serif text-lg font-bold text-white">SSC Secondary School</h4>
-                                <p class="text-sm text-forest-300">Vijayanikethan High School</p>
-                                <span class="inline-block mt-1 text-xs font-semibold bg-forest-900 px-2.5 py-0.5 rounded text-forest-300">Score: 600 / 600 (Perfect 10 GPA)</span>
-                            </div>
-
                         </div>
                     </div>
-
-                    <!-- Right: Verified Certifications -->
-                    <div class="lg:col-span-7 space-y-6">
-                        <div>
-                            <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">VERIFIED INVENTORIES</span>
-                            <h2 class="font-serif text-2xl md:text-3xl font-bold text-white mt-1">Certifications & Experience</h2>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-                            
-                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all">
-                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
-                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
-                                    <span class="text-xs font-bold tracking-wider uppercase">Internship (2025)</span>
-                                </div>
-                                <h4 class="font-serif font-bold text-white">MERN Stack Intern</h4>
-                                <p class="text-xs text-forest-400 mt-0.5">Cantilever Labs</p>
-                            </div>
-
-                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all">
-                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
-                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
-                                    <span class="text-xs font-bold tracking-wider uppercase">Salesforce Admin</span>
-                                </div>
-                                <h4 class="font-serif font-bold text-white">Trailhead Administrator</h4>
-                                <p class="text-xs text-forest-400 mt-0.5">Salesforce Trailhead Academy</p>
-                            </div>
-
-                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all">
-                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
-                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
-                                    <span class="text-xs font-bold tracking-wider uppercase">Networking (2025)</span>
-                                </div>
-                                <h4 class="font-serif font-bold text-white">CCNA Network Associate</h4>
-                                <p class="text-xs text-forest-400 mt-0.5">Cisco Networking Academy</p>
-                            </div>
-
-                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all">
-                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
-                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
-                                    <span class="text-xs font-bold tracking-wider uppercase">Python Essentials (2025)</span>
-                                </div>
-                                <h4 class="font-serif font-bold text-white">Python Core Certified</h4>
-                                <p class="text-xs text-forest-400 mt-0.5">Cisco Networking Academy</p>
-                            </div>
-
-                            <div class="bg-forest-900/40 p-4 rounded-lg border border-forest-800 hover:border-forest-700 transition-all sm:col-span-2">
-                                <div class="flex items-center space-x-2 text-forest-300 mb-1">
-                                    <i data-lucide="award" class="w-4 h-4 text-forest-400"></i>
-                                    <span class="text-xs font-bold tracking-wider uppercase">Database Dev (2024)</span>
-                                </div>
-                                <h4 class="font-serif font-bold text-white">Database Programming with MySQL</h4>
-                                <p class="text-xs text-forest-400 mt-0.5">Oracle Academy</p>
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </section>
 
-        <!-- SECTION 6: CONNECT -->
-        <section id="contact" class="snap-section w-full min-h-[calc(100vh-4rem)] md:min-h-screen flex flex-col justify-center px-6 md:px-24 bg-forest-900 border-t md:border-t-0 md:border-l border-forest-800 relative">
-            <div class="max-w-4xl py-12">
-                <div class="space-y-8">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 bg-gray-50 dark:bg-darkBg relative z-10 border-t border-b border-gray-100 dark:border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            
+            <div class="text-center max-w-2xl mx-auto mb-20 scroll-reveal transform translate-y-4 opacity-0 transition-all duration-700">
+                <span class="text-brand-600 dark:text-brand-500 font-mono font-bold text-xs uppercase tracking-widest block mb-4">// System Capacities</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight">Technical Architecture</h2>
+                <p class="text-gray-500 dark:text-gray-400 font-sans mt-3">Refined programming languages, database systems, core configurations, and developer utilities.</p>
+            </div>
+
+            <!-- Grouped Skills Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Category 1: Programming Languages -->
+                <div class="bg-white dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800 scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-100">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2.5 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-lg">
+                            <i data-lucide="code" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Programming</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">Java</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">C Language</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">JavaScript (ES6+)</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">SQL</span>
+                    </div>
+                </div>
+
+                <!-- Category 2: Web Technologies (MERN) -->
+                <div class="bg-white dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800 scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-200">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2.5 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-lg">
+                            <i data-lucide="layout" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Web Engineering</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">React.js</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">Node.js</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">Express.js</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">HTML5 / CSS3</span>
+                    </div>
+                </div>
+
+                <!-- Category 3: Database Engineering -->
+                <div class="bg-white dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800 scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-300">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2.5 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-lg">
+                            <i data-lucide="database" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Databases</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">MongoDB</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">MySQL</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">SQLite</span>
+                    </div>
+                </div>
+
+                <!-- Category 4: Salesforce Architectures -->
+                <div class="bg-white dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800 scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-400">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2.5 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-lg">
+                            <i data-lucide="cloud" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Salesforce Developer</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">Apex Logic</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">SOQL Queries</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">LWC Design</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">Flow Builder</span>
+                    </div>
+                </div>
+
+                <!-- Category 5: Computer Foundations -->
+                <div class="bg-white dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800 scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-500">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2.5 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-lg">
+                            <i data-lucide="server" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Core CS</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">DSA Logic</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">OOP Paradigms</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">Operating Systems</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">Networks</span>
+                    </div>
+                </div>
+
+                <!-- Category 6: Developer Utilities -->
+                <div class="bg-white dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800 scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-600">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="p-2.5 bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 rounded-lg">
+                            <i data-lucide="sliders" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-lg">Developer Tools</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">Git / GitHub</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">VS Code</span>
+                        <span class="px-3.5 py-1.5 bg-gray-50 dark:bg-gray-800 text-sm font-mono text-gray-700 dark:text-gray-300 rounded-lg hover:border-brand-500 border border-transparent transition-all cursor-default">Postman API</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-32 bg-white dark:bg-darkBg relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            
+            <div class="text-center max-w-2xl mx-auto mb-20 scroll-reveal transform translate-y-4 opacity-0 transition-all duration-700">
+                <span class="text-brand-600 dark:text-brand-500 font-mono font-bold text-xs uppercase tracking-widest block mb-4">// Achievements & Validation</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight">Credentials & Certifications</h2>
+                <p class="text-gray-500 dark:text-gray-400 font-sans mt-3">Industry-recognized professional validations across standard software fields.</p>
+            </div>
+
+            <!-- Certs Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Certification 1: MERN Cantilever -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800/80 hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700">
                     <div>
-                        <span class="text-xs font-semibold tracking-widest text-forest-400 uppercase">05 / DIRECT CHANNEL</span>
-                        <h2 class="font-serif text-4xl md:text-6xl font-bold text-white mt-1">Let's start a conversation.</h2>
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">2025</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">MERN Stack Internship</h4>
+                        <p class="text-sm font-mono text-brand-600 dark:text-brand-400 mb-3">Cantilever Labs</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-sans">
+                            Acquired rigorous training in database queries, backend endpoints logic design, and robust React applications components.
+                        </p>
                     </div>
+                </div>
 
-                    <p class="text-forest-300 text-base md:text-lg max-w-xl font-light">
-                        Always interested in developer, system design, data structures discussion, and internship or entry SDE opportunities. Drop a query or invite!
+                <!-- Certification 2: Salesforce Admin -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800/80 hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-100">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                <i data-lucide="cloud-lightning" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">Trailhead</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Administrator</h4>
+                        <p class="text-sm font-mono text-brand-600 dark:text-brand-400 mb-3">Salesforce Trailhead Academy</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-sans">
+                            Acquired architecture metrics for platform automation, flow controls, schema structures, profiles definitions, and user matrix tools.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Certification 3: CCNA Cisco -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800/80 hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-200">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                <i data-lucide="network" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">2025</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">CCNA Routing & switching</h4>
+                        <p class="text-sm font-mono text-brand-600 dark:text-brand-400 mb-3">Cisco Networking Academy</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-sans">
+                            Comprehensive conceptual framework analysis of network topologies, IP addressing schemas, switching controllers, and routing paradigms.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Certification 4: Cisco Python -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800/80 hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                <i data-lucide="shield" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">2025</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Python Essentials</h4>
+                        <p class="text-sm font-mono text-brand-600 dark:text-brand-400 mb-3">Cisco Networking Academy</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-sans">
+                            Evaluated programming concepts, advanced control structures, objects paradigms, handling errors, and libraries integration modules.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Certification 5: Oracle MySQL -->
+                <div class="bg-gray-50 dark:bg-darkCard p-8 rounded-2xl border border-gray-100 dark:border-gray-800/80 hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between scroll-reveal transform translate-y-6 opacity-0 transition-all duration-700 delay-400">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                                <i data-lucide="database-backup" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-mono font-bold text-gray-400 dark:text-gray-500">2024</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Programming with MySQL</h4>
+                        <p class="text-sm font-mono text-brand-600 dark:text-brand-400 mb-3">Oracle Academy</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-sans">
+                            Acquired database conceptual schemas modeling, normalization, subqueries execution, relational constraints, joins execution.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 bg-gray-50 dark:bg-darkBg relative z-10 border-t border-gray-100 dark:border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Contact info panel -->
+                <div class="lg:col-span-5 scroll-reveal transform -translate-x-6 opacity-0 transition-all duration-700">
+                    <span class="text-brand-600 dark:text-brand-500 font-mono font-bold text-xs uppercase tracking-widest block mb-4">// Get In Touch</span>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6 text-gray-900 dark:text-white">
+                        Let’s initiate absolute solutions.
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-sans mb-10">
+                        Interested in collaborative microservices, robust algorithms evaluation, or full-stack software implementation? Direct lines are always open. Reach out via email or direct profile links below.
                     </p>
 
-                    <!-- Contact Details cards -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-                        
-                        <a href="mailto:kumarkarthik84192@gmail.com" class="group bg-forest-950 p-6 rounded-xl border border-forest-800 hover:border-forest-500 transition-all flex items-center space-x-4">
-                            <div class="p-3 bg-forest-900 rounded-lg text-forest-300 group-hover:text-forest-100 transition-colors">
-                                <i data-lucide="mail" class="w-6 h-6"></i>
+                    <!-- Profile items -->
+                    <div class="space-y-6">
+                        <a href="mailto:kumarkarthik84192@gmail.com" class="flex items-center space-x-4 p-4 rounded-xl bg-white dark:bg-darkCard border border-gray-150 dark:border-gray-800 hover:-translate-y-0.5 transition-all">
+                            <div class="p-3 bg-rose-50 dark:bg-rose-950/20 text-brand-600 dark:text-brand-400 rounded-lg">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <span class="text-xs text-forest-400 block uppercase tracking-wider">Email Address</span>
-                                <span class="text-sm font-semibold text-white break-all">kumarkarthik84192@gmail.com</span>
+                                <h5 class="font-mono text-xs text-gray-400 uppercase tracking-wider">Direct Mailbox</h5>
+                                <p class="text-sm font-bold text-gray-800 dark:text-gray-200">kumarkarthik84192@gmail.com</p>
                             </div>
                         </a>
 
-                        <div class="bg-forest-950 p-6 rounded-xl border border-forest-800 flex items-center space-x-4">
-                            <div class="p-3 bg-forest-900 rounded-lg text-forest-300">
-                                <i data-lucide="phone" class="w-6 h-6"></i>
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-white dark:bg-darkCard border border-gray-150 dark:border-gray-800">
+                            <div class="p-3 bg-rose-50 dark:bg-rose-950/20 text-brand-600 dark:text-brand-400 rounded-lg">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <span class="text-xs text-forest-400 block uppercase tracking-wider">Contact Number</span>
-                                <span class="text-sm font-semibold text-white">+91 8309050474</span>
+                                <h5 class="font-mono text-xs text-gray-400 uppercase tracking-wider">Mobile Support</h5>
+                                <p class="text-sm font-bold text-gray-800 dark:text-gray-200">+91 8309050474</p>
                             </div>
                         </div>
-
                     </div>
-
-                    <!-- Developer Profiles -->
-                    <div class="pt-8 border-t border-forest-800/80">
-                        <span class="text-xs text-forest-400 block uppercase tracking-widest mb-4">Competitive Coding & Networks</span>
-                        <div class="flex flex-wrap gap-4">
-                            <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 bg-forest-950 px-4 py-2 rounded-lg border border-forest-800 hover:border-forest-600 hover:text-white transition-all text-sm">
-                                <i data-lucide="code" class="w-4 h-4 text-forest-400"></i>
-                                <span>LeetCode Profile</span>
-                            </a>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 bg-forest-950 px-4 py-2 rounded-lg border border-forest-800 hover:border-forest-600 hover:text-white transition-all text-sm">
-                                <i data-lucide="github" class="w-4 h-4 text-forest-400"></i>
-                                <span>GitHub Workspace</span>
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 bg-forest-950 px-4 py-2 rounded-lg border border-forest-800 hover:border-forest-600 hover:text-white transition-all text-sm">
-                                <i data-lucide="linkedin" class="w-4 h-4 text-forest-400"></i>
-                                <span>LinkedIn Link</span>
-                            </a>
-                        </div>
-                    </div>
-
                 </div>
+
+                <!-- Glass Profile Matrix -->
+                <div class="lg:col-span-7 bg-white dark:bg-darkCard border border-gray-200 dark:border-gray-800/80 p-8 sm:p-12 rounded-3xl shadow-2xl scroll-reveal transform translate-x-6 opacity-0 transition-all duration-700">
+                    <h3 class="text-2xl font-black mb-6">Coding Profiles & Social Networks</h3>
+                    <p class="text-gray-500 dark:text-gray-400 font-sans text-sm mb-8">Access my active code pipelines, algorithm platforms solutions, and professional networking assets.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <!-- Profile link item 1 -->
+                        <a href="https://github.com/karthik9724" target="_blank" class="flex items-center justify-between p-5 rounded-2xl bg-gray-50 hover:bg-brand-50 dark:bg-gray-800/50 dark:hover:bg-gray-800 border border-gray-100 dark:border-gray-700 group transition-all duration-300">
+                            <div class="flex items-center space-x-4">
+                                <i data-lucide="github" class="w-6 h-6 text-gray-600 group-hover:text-brand-600 dark:text-gray-300 dark:group-hover:text-brand-400"></i>
+                                <div>
+                                    <h5 class="font-bold text-sm">GitHub</h5>
+                                    <p class="text-xs text-gray-400">@karthik9724</p>
+                                </div>
+                            </div>
+                            <i data-lucide="external-link" class="w-4 h-4 text-gray-400 group-hover:text-brand-600 transition-colors"></i>
+                        </a>
+
+                        <!-- Profile link item 2 -->
+                        <a href="https://linkedin.com" target="_blank" class="flex items-center justify-between p-5 rounded-2xl bg-gray-50 hover:bg-brand-50 dark:bg-gray-800/50 dark:hover:bg-gray-800 border border-gray-100 dark:border-gray-700 group transition-all duration-300">
+                            <div class="flex items-center space-x-4">
+                                <i data-lucide="linkedin" class="w-6 h-6 text-gray-600 group-hover:text-brand-600 dark:text-gray-300 dark:group-hover:text-brand-400"></i>
+                                <div>
+                                    <h5 class="font-bold text-sm">LinkedIn</h5>
+                                    <p class="text-xs text-gray-400">Bogimi Karthik Naidu</p>
+                                </div>
+                            </div>
+                            <i data-lucide="external-link" class="w-4 h-4 text-gray-400 group-hover:text-brand-600 transition-colors"></i>
+                        </a>
+
+                    </div>
+                </div>
+
             </div>
+        </div>
+    </section>
 
-            <!-- Footer absolute note -->
-            <div class="absolute bottom-6 left-6 md:left-24 text-[10px] text-forest-600 flex items-center space-x-2 uppercase">
-                <span>© 2026 Bogimi Karthik Naidu</span>
-                <span>•</span>
-                <span>Assigned Ref ID: 23R11A0597</span>
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-darkBg border-t border-gray-100 dark:border-gray-900 py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-center md:text-left">
+            <div>
+                <p class="text-sm text-gray-400 dark:text-gray-500">&copy; 2026 Bogimi Karthik Naidu. All engineering rights reserved.</p>
+                <p class="text-[10px] font-mono text-gray-400 dark:text-gray-600 mt-1">Built with semantic HTML5 + Tailwind CSS v3 + Vanilla JS</p>
             </div>
-        </section>
+            
+            <a href="#hero" class="p-3 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 hover:bg-brand-100 dark:hover:bg-brand-900/50 transition-all flex items-center justify-center" aria-label="Back to top">
+                <i data-lucide="chevron-up" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </footer>
 
-    </main>
-
-    <!-- JAVASCRIPT CONTROLLER -->
     <script>
-        // Init Lucide Icons instantly
+        // Initialize Icons
         lucide.createIcons();
 
-        // Get DOM references
-        const container = document.getElementById('viewportContainer');
-        const bullets = document.querySelectorAll('.bullet-indicator');
-        const navBtns = document.querySelectorAll('.nav-btn');
-        const progressBar = document.getElementById('progressBar');
+        // Typewriter Animation logic
+        const typewriterWords = ["Full-Stack Engineer", "AI/ML Developer", "Java & DSA Problem Solver"];
+        let activeWordIndex = 0;
+        let activeCharIndex = 0;
+        let isDeleting = false;
+        const targetTypewriterEl = document.getElementById('typewriter');
 
-        // Scroll helper function for desktop (snap scroll)
-        function scrollToSection(index) {
-            const isDesktop = window.innerWidth >= 768;
-            if (isDesktop) {
-                container.scrollTo({
-                    left: window.innerWidth * index,
-                    behavior: 'smooth'
-                });
+        function executeTypingEngine() {
+            const currentWord = typewriterWords[activeWordIndex];
+            if (isDeleting) {
+                targetTypewriterEl.textContent = currentWord.substring(0, activeCharIndex - 1);
+                activeCharIndex--;
             } else {
-                const targetId = ['hero', 'about', 'skills', 'projects', 'journey', 'contact'][index];
-                document.getElementById(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                targetTypewriterEl.textContent = currentWord.substring(0, activeCharIndex + 1);
+                activeCharIndex++;
             }
-            updateActiveIndicator(index);
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && activeCharIndex === currentWord.length) {
+                typeSpeed = 1500; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && activeCharIndex === 0) {
+                isDeleting = false;
+                activeWordIndex = (activeWordIndex + 1) % typewriterWords.length;
+                typeSpeed = 400; // Pause before typing next word
+            }
+
+            setTimeout(executeTypingEngine, typeSpeed);
+        }
+        executeTypingEngine();
+
+        // Dark/Light Mode Management engine
+        const themeToggleButton = document.getElementById('theme-toggle');
+        
+        // Match localStorage value or user OS preference defaults
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
 
-        // Active State indicator update based on position
-        function updateActiveIndicator(index) {
-            bullets.forEach((el, idx) => {
-                if (idx === index) {
-                    el.classList.add('bg-forest-300', 'scale-125');
-                    el.classList.remove('bg-forest-800');
-                } else {
-                    el.classList.remove('bg-forest-300', 'scale-125');
-                    el.classList.add('bg-forest-800');
-                }
-            });
-
-            navBtns.forEach((el, idx) => {
-                if (idx === index) {
-                    el.classList.add('text-forest-300');
-                    el.classList.remove('text-forest-500');
-                } else {
-                    el.classList.remove('text-forest-300');
-                    el.classList.add('text-forest-500');
-                }
-            });
-
-            // Calculate progress percent
-            const percent = ((index) / 5) * 100;
-            progressBar.style.width = `${percent}%`;
-        }
-
-        // Event listener for horizontal container scrolling (Desktop Snap-scroll sync)
-        container.addEventListener('scroll', () => {
-            if (window.innerWidth >= 768) {
-                const scrollLeft = container.scrollLeft;
-                const width = window.innerWidth;
-                const activeIndex = Math.round(scrollLeft / width);
-                updateActiveIndicator(activeIndex);
+        themeToggleButton.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
             }
         });
 
-        // Event listener for vertical viewport scrolling sync (Mobile fallback)
+        // Mobile responsive dropdown navigation menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNavDropdown = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNavDropdown.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavDropdown.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer scroll animations trigger engine
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const observerConfig = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-4', 'translate-y-6', 'translate-x-6', '-translate-x-6');
+                    entry.target.classList.add('opacity-100', 'translate-y-0', 'translate-x-0');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerConfig);
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        // Nav Glass Blur opacity control on scroll
         window.addEventListener('scroll', () => {
-            if (window.innerWidth < 768) {
-                const sections = ['hero', 'about', 'skills', 'projects', 'journey', 'contact'];
-                let activeIndex = 0;
-                let minDiff = Infinity;
-                
-                sections.forEach((id, index) => {
-                    const rect = document.getElementById(id).getBoundingClientRect();
-                    const diff = Math.abs(rect.top);
-                    if (diff < minDiff) {
-                        minDiff = diff;
-                        activeIndex = index;
-                    }
-                });
-                updateActiveIndicator(activeIndex);
+            const navEl = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                navEl.classList.add('shadow-md');
+            } else {
+                navEl.classList.remove('shadow-md');
             }
         });
-
-        // Mouse Wheel Horizontal Scroll Intercept (Optional helper for standard vertical scrolling mousewheels)
-        container.addEventListener('wheel', (e) => {
-            if (window.innerWidth >= 768) {
-                // Only intercept vertical mouse wheel to move horizontal container
-                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-                    container.scrollLeft += e.deltaY;
-                }
-            }
-        });
-
-        // Initialize progress bar width on load
-        updateActiveIndicator(0);
     </script>
 </body>
 </html>
